@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <div class="form-container">
+        <div class="form-header">
+            <h2>Welcome Back</h2>
+            <p>Please login to your account</p>
+        </div>
+        
+        <form class="auth-form" action="/login" method="post">
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    name="username" 
+                    id="username" 
+                    placeholder=" " 
+                    required 
+                    autocomplete="username"
+                >
+                <label for="username">Username</label>
+                <span class="underline"></span>
+            </div>
+            
+            <div class="input-group">
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    placeholder=" " 
+                    required
+                    autocomplete="current-password"
+                >
+                <label for="password">Password</label>
+                <span class="underline"></span>
+            </div>
+            
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox" name="remember">
+                    <span>Remember me</span>
+                </label>
+                <a href="/forgot-password" class="forgot-password">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                <span>Login</span>
+                <svg width="15" height="10" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </button>
+        </form>
+        
+        <div class="form-footer">
+            <p>Don't have an account? <a href="../templates/register.html" class="auth-link">Register</a></p>
+        </div>
+    </div>
+</body>
+</html>

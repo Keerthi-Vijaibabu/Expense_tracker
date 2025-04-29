@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="form-container">
+        <div class="form-header">
+            <h2>Create Account</h2>
+            <p>Join our community today</p>
+        </div>
+        <form action="/register" method="post">
+            <div class="input-group">
+                <input type="text" name="username" id="username" placeholder=" " required autocomplete="username">
+                <label for="username">Username</label>
+                <span class="underline"></span>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" id="password" placeholder=" " required autocomplete="new-password">
+                <label for="password">Password</label>
+                <span class="underline"></span>
+            </div>
+            <button type="submit" class="submit-btn">
+                <span>Register</span>
+                <svg width="15" height="10" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </button>
+        </form>
+        <div class="form-footer">
+            <p>Already have an account? <a href="../templates/login.html" class="auth-link">Sign In</a></p>
+        </div>
+    </div>
+</body>
+</html>
