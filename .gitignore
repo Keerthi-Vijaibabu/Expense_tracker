@@ -1,0 +1,45 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+env/
+venv/
+ENV/
+.venv/
+
+# Flask & Python environment
+instance/
+*.env
+.env.*
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# VS Code settings
+.vscode/
+
+# Mac system files
+.DS_Store
+
+# Node modules (if using npm for JS libraries)
+node_modules/
+
+# Test coverage & pytest cache
+.coverage
+coverage/
+.cache/
+.pytest_cache/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Git
+*.orig
