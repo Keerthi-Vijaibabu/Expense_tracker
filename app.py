@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request, redirect, session
 from db import cursor, db
+from datetime import date
+
+
+
 
 app = Flask(__name__)
 # Add secret key for session
@@ -13,16 +17,16 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        query = "Select password from users where username =", username
-        cursor.execute(query)
-        password_correct = cursor.fetchone
-        if password == password_correct:
-            session['user'] = username
+        cursor.execute("SELECT user_id, password FROM users WHERE username = %s", (username,))
+        result = cursor.fetchone()
+
+        if result and password == result[1]:
+            session['user'] = result[0]
             return redirect('/')
         else:
             error = 'Invalid username or password'
 
-    return render_template('login.html', error=error)
+    return render_template('index.html', error=error)
 
 
 # Logout Route
@@ -45,10 +49,27 @@ def index():
         for i in expenses:
             total_exp += i[1]
 
-    query = "SELECT income"
+    query = "SELECT amount from income where user_id == " + session.get('user')
+    cursor.execute(query)
+    income = cursor.fetchone()
+    query = "SELECT amount from income where user_id == " + session.get('user')
+    return render_template('dashboard.html', total=total_exp, expenses=expenses, income=None, savings=None)
 
-    return render_template('index.html', total=total_exp, expenses=expenses, income=None, savings=None)
 
+#Expenses
+@app.route('/')
+def expenses():
+    if 'user' not in session:
+        return redirect('/login')
+
+    cursor.execute("SELECT * FROM expenses")
+    expenses = cursor.fetchall()
+    total_exp = 0
+    if len(cursor) != 0:
+        for i in expenses:
+            total_exp += i[1]
+
+    return render_template('index.html', expenses=expenses)
 
 # Add Expense Route
 @app.route('/add', methods=['POST'])
@@ -59,9 +80,10 @@ def add_expense():
     amount = request.form['amount']
     category = request.form['category']
     description = request.form['description']
+    today = date.today()
 
-    sql = "INSERT INTO expenses (amount, category, description) VALUES (%s, %s, %s)"
-    val = (amount, category, description)
+    sql = "INSERT INTO expenses (user_id, amount, category, expense_date, description) VALUES (%s, %s, %s, %s, %s)"
+    val = (session.get('user'), amount, category, today, description)
     cursor.execute(sql, val)
     db.commit()
 
