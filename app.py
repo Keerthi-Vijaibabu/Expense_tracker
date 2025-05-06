@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, session
 from db import cursor, db
+
 app = Flask(__name__)
 # Add secret key for session
 app.secret_key = 'f9a8f7c3c9e14b8a3fa5dc092bfea3b2a4ccdef26d27fae1dc82a9db9c14fd21'
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -22,18 +24,20 @@ def login():
 
     return render_template('login.html', error=error)
 
+
 # Logout Route
 @app.route('/logout')
 def logout():
     session.pop('user', None)
     return redirect('/login')
 
+
 # Dashboard (view all expenses)
 @app.route('/')
 def index():
     if 'user' not in session:
         return redirect('/login')
-    
+
     cursor.execute("SELECT * FROM expenses")
     expenses = cursor.fetchall()
     total_exp = 0
@@ -41,14 +45,17 @@ def index():
         for i in expenses:
             total_exp += i[1]
 
-    return render_template('index.html', total = total_exp, expenses=expenses)
+    query = "SELECT income"
+
+    return render_template('index.html', total=total_exp, expenses=expenses, income=None, savings=None)
+
 
 # Add Expense Route
 @app.route('/add', methods=['POST'])
 def add_expense():
     if 'user' not in session:
         return redirect('/login')
-    
+
     amount = request.form['amount']
     category = request.form['category']
     description = request.form['description']
@@ -59,6 +66,7 @@ def add_expense():
     db.commit()
 
     return redirect('/')
+
 
 # Run the app
 if __name__ == '__main__':
