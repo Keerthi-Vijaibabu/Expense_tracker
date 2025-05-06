@@ -28,6 +28,29 @@ def login():
 
     return render_template('index.html', error=error)
 
+#Register Route
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    error = None
+    if request.method == 'POST':
+        username = request.form['username'].strip()
+        password = request.form['password']
+        confirm = request.form['confirmPassword']
+
+        # Check if passwords match
+        if password != confirm:
+            error = "Passwords do not match"
+        else:
+            # Check if user already exists
+            cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
+            if cursor.fetchone():
+                error = "Username already exists"
+            else:
+                cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
+                db.commit()
+                return redirect('/login')
+
+    return render_template('register.html', error=error)
 
 # Logout Route
 @app.route('/logout')
@@ -38,7 +61,7 @@ def logout():
 
 # Dashboard (view all expenses)
 @app.route('/')
-def index():
+def dashboard():
     if 'user' not in session:
         return redirect('/login')
 
