@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-from db import cursor
+from db import cursor, db
 app = Flask(__name__)
 # Add secret key for session
 app.secret_key = 'f9a8f7c3c9e14b8a3fa5dc092bfea3b2a4ccdef26d27fae1dc82a9db9c14fd21'
@@ -28,7 +28,7 @@ def logout():
     session.pop('user', None)
     return redirect('/login')
 
-# Home Route (view all expenses)
+# Dashboard (view all expenses)
 @app.route('/')
 def index():
     if 'user' not in session:
@@ -36,7 +36,12 @@ def index():
     
     cursor.execute("SELECT * FROM expenses")
     expenses = cursor.fetchall()
-    return render_template('index.html', expenses=expenses)
+    total_exp = 0
+    if len(cursor) != 0:
+        for i in expenses:
+            total_exp += i[1]
+
+    return render_template('index.html', total = total_exp, expenses=expenses)
 
 # Add Expense Route
 @app.route('/add', methods=['POST'])
