@@ -17,7 +17,7 @@ CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE,
     password VARCHAR(255),
-    email VARCHAR(100) UNIQUE,
+    name VARCHAR(100),
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
