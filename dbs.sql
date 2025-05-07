@@ -1,6 +1,7 @@
 
 create database expense;
 
+
 use expense;
 CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -20,13 +21,7 @@ CREATE TABLE expenses (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-CREATE TABLE users (
-    user_id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(50) UNIQUE,
-    password VARCHAR(255),
-    name VARCHAR(100),
-    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+
 
 CREATE TABLE income (
     income_id INT PRIMARY KEY AUTO_INCREMENT,
