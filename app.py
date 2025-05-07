@@ -33,9 +33,10 @@ def login():
 def register():
     error = None
     if request.method == 'POST':
+        full_name = request.form['name'].strip()
         username = request.form['username'].strip()
-        password = request.form['password']
-        confirm = request.form['confirmPassword']
+        password = request.form['password'].strip()
+        confirm = request.form['confirmPassword'].strip()
 
         # Check if passwords match
         if password != confirm:
@@ -46,7 +47,7 @@ def register():
             if cursor.fetchone():
                 error = "Username already exists"
             else:
-                cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
+                cursor.execute("INSERT INTO users (username, password, name) VALUES (%s, %s, %s)", (username, password, full_name))
                 db.commit()
                 return redirect('/login')
 
