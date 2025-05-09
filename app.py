@@ -27,6 +27,7 @@ def login():
 
 #Register Route
 @app.route('/register', methods=['GET', 'POST'])
+# figure out something to take directly to dashboard
 def register():
     error = None
     if request.method == 'POST':
@@ -73,13 +74,12 @@ def dashboard():
     cursor.execute("SELECT * FROM expenses")
     expenses = cursor.fetchall()
     total_exp = 0
-    if len(cursor) != 0:
+    if len(expenses) != 0:
         for i in expenses:
             total_exp += i[1]
 
     cursor.execute("SELECT amount FROM income WHERE user_id = %s", (session.get('user'),))
     income = cursor.fetchone()
-    query = "SELECT amount from income where user_id == " + session.get('user')
     return render_template('dashboard.html', total=total_exp, expenses=expenses, income=income, savings=None)
 
 
@@ -92,7 +92,7 @@ def expenses():
     cursor.execute("SELECT * FROM expenses")
     expenses = cursor.fetchall()
     total_exp = 0
-    if len(cursor) != 0:
+    if len(expenses) != 0:
         for i in expenses:
             total_exp += i[1]
 

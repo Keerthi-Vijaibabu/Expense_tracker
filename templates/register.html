@@ -85,12 +85,18 @@
             <p>Start managing your finances today</p>
           </div>
           <div class="card-body">
-            <form class="auth-form" id="registerForm" action="/register" method = 'POST'>
+            <form
+              class="auth-form"
+              id="registerForm"
+              action="/register"
+              method="POST"
+            >
               <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text"
+                <input
+                  type="text"
                   id="name"
-                       name = "name"
+                  name="name"
                   class="form-input"
                   placeholder="John Doe"
                   required
@@ -101,7 +107,7 @@
                 <input
                   type="text"
                   id="username"
-                  name = "username"
+                  name="username"
                   class="form-input"
                   placeholder="username"
                   required
@@ -112,7 +118,7 @@
                 <input
                   type="password"
                   id="password"
-                  name = "password"
+                  name="password"
                   class="form-input"
                   placeholder="password"
                   required
@@ -126,7 +132,7 @@
                 <input
                   type="password"
                   id="confirmPassword"
-                  name = "confirmPassword"
+                  name="confirmPassword"
                   class="form-input"
                   placeholder="Confirm password"
                   required
@@ -140,7 +146,7 @@
           <div class="card-footer">
             <p>
               Already have an account?
-              <a href="index.html" class="text-link">Sign in</a>
+              <a href="{{ url_for('login') }}" class="text-link">Sign in</a>
             </p>
           </div>
         </div>
