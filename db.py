@@ -1,10 +1,10 @@
 import mysql.connector
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="sivasubhi2468",
-    port = 3306,
-    database="expense"
-)
 
-cursor = db.cursor()
+def get_db():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="Keerthi@12",
+        database="expense",
+        port = 3307
+    )

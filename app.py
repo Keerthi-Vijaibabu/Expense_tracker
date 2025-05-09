@@ -1,21 +1,24 @@
 from flask import Flask, render_template, request, redirect, session
-from db import cursor, db
+from db import get_db
 from datetime import date
 
 app = Flask(__name__)
-# Add secret key for session
 app.secret_key = 'f9a8f7c3c9e14b8a3fa5dc092bfea3b2a4ccdef26d27fae1dc82a9db9c14fd21'
 
-#Login Route
+# Login Route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = request.form.get('username')
+        password = request.form.get('password')
 
+        db = get_db()
+        cursor = db.cursor()
         cursor.execute("SELECT user_id, password FROM users WHERE username = %s", (username,))
         result = cursor.fetchone()
+        cursor.close()
+        db.close()
 
         if result and password == result[1]:
             session['user'] = result[0]
@@ -25,9 +28,8 @@ def login():
 
     return render_template('index.html', error=error)
 
-#Register Route
+# Register Route
 @app.route('/register', methods=['GET', 'POST'])
-# figure out something to take directly to dashboard
 def register():
     error = None
     if request.method == 'POST':
@@ -39,22 +41,30 @@ def register():
         if password != confirm:
             error = "Passwords do not match"
         else:
-            cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
-            existing_user = cursor.fetchone()
-            cursor.close()
-            if existing_user:
-                error = "Username already exists"
-            else:
-                try:
+            try:
+                db = get_db()
+                cursor = db.cursor()
+                cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
+                if cursor.fetchone():
+                    error = "Username already exists"
+                else:
                     cursor.execute(
                         "INSERT INTO users (username, password, name) VALUES (%s, %s, %s)",
                         (username, password, full_name)
                     )
                     db.commit()
-                    return redirect('/login')
-                except Exception as e:
-                    db.rollback()  # Optional safety
-                    error = f"DB error: {e}"
+                    # Auto-login after register
+                    cursor.execute("SELECT user_id FROM users WHERE username = %s", (username,))
+                    user_id = cursor.fetchone()[0]
+                    session['user'] = user_id
+
+                    cursor.close()
+                    db.close()
+                    return redirect('/')
+                cursor.close()
+                db.close()
+            except Exception as e:
+                error = f"Database error: {e}"
 
     return render_template('register.html', error=error)
 
@@ -64,58 +74,65 @@ def logout():
     session.pop('user', None)
     return redirect('/login')
 
-
-# Dashboard (view all expenses)
+# Dashboard Route
 @app.route('/')
 def dashboard():
     if 'user' not in session:
         return redirect('/login')
 
-    cursor.execute("SELECT * FROM expenses")
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM expenses WHERE user_id = %s", (session.get('user'),))
     expenses = cursor.fetchall()
-    total_exp = 0
-    if len(expenses) != 0:
-        for i in expenses:
-            total_exp += i[1]
+
+    total_exp = sum([e[1] for e in expenses]) if expenses else 0
 
     cursor.execute("SELECT amount FROM income WHERE user_id = %s", (session.get('user'),))
     income = cursor.fetchone()
-    return render_template('dashboard.html', total=total_exp, expenses=expenses, income=income, savings=None)
+    cursor.close()
+    db.close()
 
+    income_val = income[0] if income else 0
+    savings = income_val - total_exp if income_val else None
 
-#Expenses
-@app.route('/add')
-def expenses():
+    return render_template('dashboard.html', total=total_exp, expenses=expenses, income=income_val, savings=savings)
+
+# View Expenses
+@app.route('/expenses')
+def view_expenses():
     if 'user' not in session:
         return redirect('/login')
 
-    cursor.execute("SELECT * FROM expenses")
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM expenses WHERE user_id = %s", (session.get('user'),))
     expenses = cursor.fetchall()
-    total_exp = 0
-    if len(expenses) != 0:
-        for i in expenses:
-            total_exp += i[1]
+    cursor.close()
+    db.close()
 
     return render_template('index.html', expenses=expenses)
 
-# Add Expense Route
+# Add Expense
 @app.route('/add', methods=['POST'])
 def add_expense():
     if 'user' not in session:
         return redirect('/login')
 
-    amount = request.form['amount']
-    category = request.form['category']
-    description = request.form['description']
+    amount = request.form.get('amount')
+    category = request.form.get('category')
+    description = request.form.get('description')
     today = date.today()
 
+    db = get_db()
+    cursor = db.cursor()
     sql = "INSERT INTO expenses (user_id, amount, category, expense_date, description) VALUES (%s, %s, %s, %s, %s)"
     val = (session.get('user'), amount, category, today, description)
     cursor.execute(sql, val)
     db.commit()
+    cursor.close()
+    db.close()
 
     return redirect('/')
-
 
 # Run the app
 if __name__ == '__main__':
