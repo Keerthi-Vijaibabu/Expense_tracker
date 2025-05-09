@@ -2,14 +2,11 @@ from flask import Flask, render_template, request, redirect, session
 from db import cursor, db
 from datetime import date
 
-
-
-
 app = Flask(__name__)
 # Add secret key for session
 app.secret_key = 'f9a8f7c3c9e14b8a3fa5dc092bfea3b2a4ccdef26d27fae1dc82a9db9c14fd21'
 
-
+#Login Route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -33,23 +30,30 @@ def login():
 def register():
     error = None
     if request.method == 'POST':
-        full_name = request.form['name'].strip()
-        username = request.form['username'].strip()
-        password = request.form['password'].strip()
-        confirm = request.form['confirmPassword'].strip()
+        full_name = request.form.get('name', '').strip()
+        username = request.form.get('username', '').strip()
+        password = request.form.get('password', '').strip()
+        confirm = request.form.get('confirmPassword', '').strip()
 
-        # Check if passwords match
         if password != confirm:
             error = "Passwords do not match"
         else:
-            # Check if user already exists
             cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
-            if cursor.fetchone():
+            existing_user = cursor.fetchone()
+            cursor.close()
+            if existing_user:
                 error = "Username already exists"
             else:
-                cursor.execute("INSERT INTO users (username, password, name) VALUES (%s, %s, %s)", (username, password, full_name))
-                db.commit()
-                return redirect('/login')
+                try:
+                    cursor.execute(
+                        "INSERT INTO users (username, password, name) VALUES (%s, %s, %s)",
+                        (username, password, full_name)
+                    )
+                    db.commit()
+                    return redirect('/login')
+                except Exception as e:
+                    db.rollback()  # Optional safety
+                    error = f"DB error: {e}"
 
     return render_template('register.html', error=error)
 
@@ -73,15 +77,14 @@ def dashboard():
         for i in expenses:
             total_exp += i[1]
 
-    query = "SELECT amount from income where user_id == " + session.get('user')
-    cursor.execute(query)
+    cursor.execute("SELECT amount FROM income WHERE user_id = %s", (session.get('user'),))
     income = cursor.fetchone()
     query = "SELECT amount from income where user_id == " + session.get('user')
-    return render_template('dashboard.html', total=total_exp, expenses=expenses, income=None, savings=None)
+    return render_template('dashboard.html', total=total_exp, expenses=expenses, income=income, savings=None)
 
 
 #Expenses
-@app.route('/')
+@app.route('/add')
 def expenses():
     if 'user' not in session:
         return redirect('/login')
