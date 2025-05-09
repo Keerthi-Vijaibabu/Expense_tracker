@@ -3,7 +3,7 @@ create database expense;
 
 drop database expense;
 use expense;
-<<<<<<< HEAD
+
 CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE,
@@ -11,8 +11,6 @@ CREATE TABLE users (
     name VARCHAR(100) ,
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-=======
->>>>>>> 385d9894f719045f45bc43127b89bc2747ed3537
 
 CREATE TABLE expenses (
     expense_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -71,4 +69,5 @@ CREATE TABLE categories (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-select * from users;
+select * from users;	
+select * from income;	
