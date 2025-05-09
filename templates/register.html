@@ -85,12 +85,12 @@
             <p>Start managing your finances today</p>
           </div>
           <div class="card-body">
-            <form class="auth-form" id="registerForm">
+            <form class="auth-form" id="registerForm" action="/register" method = 'POST'>
               <div class="form-group">
                 <label for="name">Full Name</label>
-                <input
-                  type="text"
+                <input type="text"
                   id="name"
+                       name = "name"
                   class="form-input"
                   placeholder="John Doe"
                   required
@@ -101,6 +101,7 @@
                 <input
                   type="text"
                   id="username"
+                  name = "username"
                   class="form-input"
                   placeholder="username"
                   required
@@ -111,8 +112,9 @@
                 <input
                   type="password"
                   id="password"
+                  name = "password"
                   class="form-input"
-                  placeholder="••••••••"
+                  placeholder="password"
                   required
                 />
                 <div class="form-hint">
@@ -124,8 +126,9 @@
                 <input
                   type="password"
                   id="confirmPassword"
+                  name = "confirmPassword"
                   class="form-input"
-                  placeholder="••••••••"
+                  placeholder="Confirm password"
                   required
                 />
               </div>
