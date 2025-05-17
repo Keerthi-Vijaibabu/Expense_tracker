@@ -76,6 +76,7 @@ def logout():
 
 # Dashboard Route
 @app.route('/')
+# Savings should be changed and recalculated
 def dashboard():
     if 'user' not in session:
         return redirect('/login')
@@ -110,7 +111,7 @@ def view_expenses():
     cursor.close()
     db.close()
 
-    return render_template('index.html', expenses=expenses)
+    return render_template('expense.html', expenses=expenses)
 
 # Add Expense
 @app.route('/add', methods=['POST'])
