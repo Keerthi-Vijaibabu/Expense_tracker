@@ -26,8 +26,9 @@ BEGIN
 
     SET net_savings = total_income - total_expense;
 
-    INSERT INTO savings (user_id, yyear, mmonth, amount_saved)
+    INSERT INTO savings (user_id, year, month, amount_saved)
     VALUES (input_user_id, input_year, input_month, net_savings);
 END //
 
 DELIMITER ;
+

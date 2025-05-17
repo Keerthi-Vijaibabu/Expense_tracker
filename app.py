@@ -103,17 +103,24 @@ def dashboard():
     balance = income_val - total_exp if income_val else None
 
     cursor = db.cursor()
-    cursor.execute("SELECT name, username FROM users WHERE user_id = %s", (session.get('user'),))
+    cursor.execute("SELECT name, username FROM users WHERE user_id = %s;", (session.get('user'),))
     l = cursor.fetchone()
     name = l[0]
     username = l[1]
-    db.close()
+
 
 
     savings = 0
     if now.day == 30:
         cursor = db.cursor()
-        cursor.execute()
+        cursor.execute("calculate_monthly_savings();")
+        cursor.close()
+
+    cursor = db.cursor()
+    cursor.execute("SELECT amount_saved FROM savings WHERE user_id = %s", (session.get('user'),))
+    saving = cursor.fetchall()
+    savings = sum([s[2] for s in saving]) if saving else 0
+
     return render_template('dashboard.html', name = name, username = username, total=total_exp, expenses=expenses, income=income_val, balance=balance, savings = savings)
 
 # View Expenses
