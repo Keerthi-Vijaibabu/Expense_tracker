@@ -145,50 +145,80 @@
 
       <main class="page-content">
         <div class="content-grid">
-          <div class="card">
-            <div class="card-header">
-              <h3>Add New Expense</h3>
-            </div>
-            <div class="card-body">
-              <form class="form" id="expenseForm">
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label for="amount">Amount</label>
-                    <div class="input-with-icon">
-                      <span class="input-icon">$</span>
-                      <input type="number" id="amount" class="form-input" placeholder="0.00" step="0.01" min="0" required>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="date">Date</label>
-                    <input type="date" id="date" class="form-input" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="category" class="form-input" required>
-                      <option value="">Select category</option>
-                      <option value="housing">Housing</option>
-                      <option value="food">Food</option>
-                      <option value="transportation">Transportation</option>
-                      <option value="utilities">Utilities</option>
-                      <option value="healthcare">Healthcare</option>
-                      <option value="entertainment">Entertainment</option>
-                      <option value="shopping">Shopping</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="description">Description</label>
-                    <input type="text" id="description" class="form-input" placeholder="Expense description">
-                  </div>
+ <div class="container">
+    <!-- Expense Stats Card -->
+    <div class="card stats-card">
+      <div class="stats-icon expense-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
+          <polyline points="17 18 23 18 23 12"></polyline>
+        </svg>
+      </div>
+      <div class="stats-info">
+        <h3>Total Expenses</h3>
+        <p class="stats-value" id="totalExpense">₹0</p>
+      </div>
+      <!-- Add button -->
+      <button id="addExpenseBtn" class="add-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Modal for Add Expense Form -->
+  <div id="expenseModal" class="modal">
+    <div class="modal-content">
+      <div class="card">
+        <div class="card-header">
+          <h3>Add New Expense</h3>
+          <button type="button" class="close-button" id="closeModal">&times;</button>
+        </div>
+        <div class="card-body">
+          <form class="form" action="add_expense" method="post" id="expenseForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="amount">Amount</label>
+                <div class="input-with-icon">
+                  <span class="input-icon">₹</span>
+                  <input type="number" id="amount" name="amount" class="form-input" placeholder="0.00" step="0.01" min="0" required>
                 </div>
-                <div class="form-actions">
-                  <button type="submit" class="btn btn-primary">Add Expense</button>
-                  <button type="reset" class="btn btn-neutral">Reset</button>
-                </div>
-              </form>
+              </div>
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" class="form-input" required>
+                  <option value="">Select category</option>
+                  <option value="housing">Housing</option>
+                  <option value="food">Food</option>
+                  <option value="transportation">Transportation</option>
+                  <option value="utilities">Utilities</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="entertainment">Entertainment</option>
+                  <option value="shopping">Shopping</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" class="form-input" placeholder="Expense description">
+              </div>
             </div>
-          </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Add Expense</button>
+              <button type="reset" class="btn btn-neutral">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
           <div class="card">
             <div class="card-header with-border">
