@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, session
 from db import get_db
-from datetime import date
+from datetime import date, datetime
+
+now = datetime.now()
 
 app = Flask(__name__)
 app.secret_key = 'f9a8f7c3c9e14b8a3fa5dc092bfea3b2a4ccdef26d27fae1dc82a9db9c14fd21'
@@ -101,12 +103,25 @@ def dashboard():
     balance = income_val - total_exp if income_val else None
 
     cursor = db.cursor()
-    cursor.execute("SELECT name, username FROM users WHERE user_id = %s", (session.get('user'),))
+    cursor.execute("SELECT name, username FROM users WHERE user_id = %s;", (session.get('user'),))
     l = cursor.fetchone()
     name = l[0]
     username = l[1]
-    db.close()
-    return render_template('dashboard.html', name = name, username = username, total=total_exp, expenses=expenses, income=income_val, balance=balance)
+
+
+
+    savings = 0
+    if now.day == 30:
+        cursor = db.cursor()
+        cursor.execute("calculate_monthly_savings();")
+        cursor.close()
+
+    cursor = db.cursor()
+    cursor.execute("SELECT amount_saved FROM savings WHERE user_id = %s", (session.get('user'),))
+    saving = cursor.fetchall()
+    savings = sum([s[2] for s in saving]) if saving else 0
+
+    return render_template('dashboard.html', name = name, username = username, total=total_exp, expenses=expenses, income=income_val, balance=balance, savings = savings)
 
 # View Expenses
 @app.route('/expenses')
@@ -124,7 +139,7 @@ def view_expenses():
     return render_template('expense.html', expenses=expenses)
 
 # Add Expense
-@app.route('/add', methods=['POST'])
+@app.route('/add_exp', methods=['POST'])
 def add_expense():
     if 'user' not in session:
         return redirect('/login')
@@ -144,6 +159,44 @@ def add_expense():
     db.close()
 
     return redirect('/')
+
+#Add Income
+@app.route('/add_inc', methods=['POST'])
+def add_income():
+    if 'user' not in session:
+        return redirect('/login')
+
+    # Get and validate form data
+    try:
+        amount = float(request.form.get('amount'))  # Convert to float for numeric safety
+        date = request.form.get('date')
+        category = request.form.get('category')
+        description = request.form.get('description')
+
+        if not (amount and date and category):  # Basic validation
+            return "Missing required fields", 400
+
+        db = get_db()
+        cursor = db.cursor()
+
+        sql = """
+            INSERT INTO income (user_id, amount, category, income_date, description)
+            VALUES (%s, %s, %s, %s, %s)
+        """
+        val = (session.get('user'), amount, category, date, description)
+        cursor.execute(sql, val)
+        db.commit()
+
+    except Exception as e:
+        db.rollback()
+        return f"Error adding income: {str(e)}", 500
+
+    finally:
+        cursor.close()
+        db.close()
+
+    return redirect('/')
+
 
 # Run the app
 if __name__ == '__main__':

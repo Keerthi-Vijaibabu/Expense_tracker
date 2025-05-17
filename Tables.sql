@@ -69,6 +69,16 @@ CREATE TABLE categories (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+CREATE TABLE savings (
+    user_id INT NOT NULL,
+    amount_saved DECIMAL(10,2) NOT NULL,
+    month INT NOT NULL,      
+    year INT NOT NULL,
+    PRIMARY KEY (user_id, month, year),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) 
+);
+
 select * from users;	
 select * from income;	
 select * from categories;
+select * from expenses;
