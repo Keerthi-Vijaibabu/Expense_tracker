@@ -1,62 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FinTrack - Dashboard</title>
-  <link rel="stylesheet" href="../static/css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-</head>
-<body>
-  <div class="app-container">
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <div class="logo">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
-            <rect width="20" height="14" x="2" y="5" rx="2"></rect>
-            <line x1="2" x2="22" y1="10" y2="10"></line>
-          </svg>
-          <h1>FinTrack</h1>
-        </div>
-        <!-- <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinTrack - Dashboard</title>
+    <link rel="stylesheet" href="../static/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  </head>
+  <body>
+    <div class="app-container">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="logo-icon"
+            >
+              <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+              <line x1="2" x2="22" y1="10" y2="10"></line>
+            </svg>
+            <h1>FinTrack</h1>
+          </div>
+          <!-- <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m15 18-6-6 6-6"></path>
           </svg>
         </button> -->
-      </div>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="active">
-            <a href="dashboard.html">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-              </svg>
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="income.html">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                <polyline points="17 6 23 6 23 12"></polyline>
-              </svg>
-              <span>Income</span>
-            </a>
-          </li>
-          <li>
-            <a href="expense.html">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
-                <polyline points="17 18 23 18 23 12"></polyline>
-              </svg>
-              <span>Expenses</span>
-            </a>
-          </li>
-          <!-- <li>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li class="active">
+              <a href="dashboard.html">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                  ></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="income.html">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                <span>Income</span>
+              </a>
+            </li>
+            <li>
+              <a href="expense.html">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
+                  <polyline points="17 18 23 18 23 12"></polyline>
+                </svg>
+                <span>Expenses</span>
+              </a>
+            </li>
+            <!-- <li>
             <a href="budget.html">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2H2v10h10V2Z"></path>
@@ -96,164 +142,252 @@
               <span>Reports</span>
             </a>
           </li> -->
-        </ul>
-      </nav>
-      <div class="sidebar-footer">
-        <div class="user-info">
-          <div class="user-avatar">JD</div>
-          <div class="user-details">
-            <p class="user-name">John Doe</p>
-            <p class="user-email">john@example.com</p>
+          </ul>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="user-info">
+            <div class="user-avatar">JD</div>
+            <div class="user-details">
+              <p class="user-name">John Doe</p>
+              <p class="user-email">john@example.com</p>
+            </div>
           </div>
-        </div>
-        <button class="logout-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-            <polyline points="16 17 21 12 16 7"></polyline>
-            <line x1="21" y1="12" x2="9" y2="12"></line>
-          </svg>
-          <span>Logout</span>
-        </button>
-      </div>
-    </aside>
-<!-- side navigation bar ends -->
-    <div class="main-content">
-      <header class="main-header">
-        <div class="header-start">
-          <h1 class="page-title">Dashboard</h1>
-          <p class="page-subtitle">Overview of your finances</p>
-        </div>
-        <div class="header-end">
-          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
-              <circle cx="12" cy="12" r="4"></circle>
-              <path d="M12 2v2"></path>
-              <path d="M12 20v2"></path>
-              <path d="m4.93 4.93 1.41 1.41"></path>
-              <path d="m17.66 17.66 1.41 1.41"></path>
-              <path d="M2 12h2"></path>
-              <path d="M20 12h2"></path>
-              <path d="m6.34 17.66-1.41 1.41"></path>
-              <path d="m19.07 4.93-1.41 1.41"></path>
+          <button class="logout-btn" action="/register">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
             </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-            </svg>
+            <span>Logout</span>
           </button>
         </div>
-      </header>
+      </aside>
+      <!-- side navigation bar ends -->
+      <div class="main-content">
+        <header class="main-header">
+          <div class="header-start">
+            <h1 class="page-title">Dashboard</h1>
+            <p class="page-subtitle">Overview of your finances</p>
+          </div>
+          <div class="header-end">
+            <button
+              class="theme-toggle"
+              id="themeToggle"
+              aria-label="Toggle dark mode"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="sun-icon"
+              >
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="moon-icon"
+              >
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+              </svg>
+            </button>
+          </div>
+        </header>
 
-      <main class="page-content">
-        <section class="stats-grid">
-          <div class="card stats-card">
-            <!-- total income -->
-            <div class="stats-icon income-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                <polyline points="17 6 23 6 23 12"></polyline>
-              </svg>
-            </div>
-            <div class="stats-info">
-              <h3>Total Income</h3>
-              <p class="stats-value">${{ income }}</p>
-            </div>
-          </div>
-          <!-- Total Expenses -->
-          <div class="card stats-card">
-            <div class="stats-icon expense-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
-                <polyline points="17 18 23 18 23 12"></polyline>
-              </svg>
-            </div>
-            <div class="stats-info">
-              <h3>Total Expenses</h3>
-              <p class="stats-value">${{ total }}</p>
-            </div>
-          </div>
-          <!-- balance -->
-          <div class="card stats-card">
-            <div class="stats-icon balance-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="20" height="14" x="2" y="5" rx="2"></rect>
-                <line x1="2" x2="22" y1="10" y2="10"></line>
-              </svg>
-            </div>
-            <div class="stats-info">
-              <h3>Balance</h3>
-              <p class="stats-value">$2,700.00</p>
-            </div>
-          </div>
-          <!-- savings -->
-          <div class="card stats-card">
-            <div class="stats-icon savings-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <circle cx="12" cy="12" r="2"></circle>
-                <path d="M12 8v1"></path>
-                <path d="M12 15v1"></path>
-                <path d="M16 12h-1"></path>
-                <path d="M9 12H8"></path>
-                <path d="m15 9-0.88 0.88"></path>
-                <path d="M9.88 14.12 9 15"></path>
-                <path d="m15 15-0.88-0.88"></path>
-                <path d="M9.88 9.88 9 9"></path>
-              </svg>
-            </div>
-            <div class="stats-info">
-              <h3>Savings</h3>
-              <p class="stats-value">$1,200.00</p>
-            </div>
-          </div>
-        </section>
-<!-- Graph -->
-        <section class="dashboard-grid">
-          <div class="card">
-            <div class="card-header">
-              <h3>Monthly Overview</h3>
-              <div class="card-actions">
-                <button class="btn btn-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                  </svg>
-                </button>
+        <main class="page-content">
+          <section class="stats-grid">
+            <div class="card stats-card">
+              <!-- total income -->
+              <div class="stats-icon income-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+              </div>
+              <div class="stats-info">
+                <h3>Total Income</h3>
+                <p class="stats-value">${{ income }}</p>
               </div>
             </div>
-            <div class="card-body">
-              <div class="chart-container">
-                <div class="chart-placeholder">
-                  <div class="chart-bars">
-                    <div class="chart-bar income" style="height: 70%;"></div>
-                    <div class="chart-bar expense" style="height: 35%;"></div>
-                    <div class="chart-bar income" style="height: 80%;"></div>
-                    <div class="chart-bar expense" style="height: 40%;"></div>
-                    <div class="chart-bar income" style="height: 75%;"></div>
-                    <div class="chart-bar expense" style="height: 30%;"></div>
-                    <div class="chart-bar income" style="height: 85%;"></div>
-                    <div class="chart-bar expense" style="height: 45%;"></div>
-                  </div>
-                  <div class="chart-labels">
-                    <span>Week 1</span>
-                    <span>Week 2</span>
-                    <span>Week 3</span>
-                    <span>Week 4</span>
-                  </div>
+            <!-- Total Expenses -->
+            <div class="card stats-card">
+              <div class="stats-icon expense-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
+                  <polyline points="17 18 23 18 23 12"></polyline>
+                </svg>
+              </div>
+              <div class="stats-info">
+                <h3>Total Expenses</h3>
+                <p class="stats-value">${{ total }}</p>
+              </div>
+            </div>
+            <!-- balance -->
+            <div class="card stats-card">
+              <div class="stats-icon balance-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                  <line x1="2" x2="22" y1="10" y2="10"></line>
+                </svg>
+              </div>
+              <div class="stats-info">
+                <h3>Balance</h3>
+                <p class="stats-value">$2,700.00</p>
+              </div>
+            </div>
+            <!-- savings -->
+            <div class="card stats-card">
+              <div class="stats-icon savings-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                  <path d="M12 8v1"></path>
+                  <path d="M12 15v1"></path>
+                  <path d="M16 12h-1"></path>
+                  <path d="M9 12H8"></path>
+                  <path d="m15 9-0.88 0.88"></path>
+                  <path d="M9.88 14.12 9 15"></path>
+                  <path d="m15 15-0.88-0.88"></path>
+                  <path d="M9.88 9.88 9 9"></path>
+                </svg>
+              </div>
+              <div class="stats-info">
+                <h3>Savings</h3>
+                <p class="stats-value">$1,200.00</p>
+              </div>
+            </div>
+          </section>
+          <!-- Graph -->
+          <section class="dashboard-grid">
+            <div class="card">
+              <div class="card-header">
+                <h3>Monthly Overview</h3>
+                <div class="card-actions">
+                  <button class="btn btn-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      ></polygon>
+                    </svg>
+                  </button>
                 </div>
-                <div class="chart-legend">
-                  <div class="legend-item">
-                    <span class="legend-color income"></span>
-                    <span>Income</span>
+              </div>
+              <div class="card-body">
+                <div class="chart-container">
+                  <div class="chart-placeholder">
+                    <div class="chart-bars">
+                      <div class="chart-bar income" style="height: 70%"></div>
+                      <div class="chart-bar expense" style="height: 35%"></div>
+                      <div class="chart-bar income" style="height: 80%"></div>
+                      <div class="chart-bar expense" style="height: 40%"></div>
+                      <div class="chart-bar income" style="height: 75%"></div>
+                      <div class="chart-bar expense" style="height: 30%"></div>
+                      <div class="chart-bar income" style="height: 85%"></div>
+                      <div class="chart-bar expense" style="height: 45%"></div>
+                    </div>
+                    <div class="chart-labels">
+                      <span>Week 1</span>
+                      <span>Week 2</span>
+                      <span>Week 3</span>
+                      <span>Week 4</span>
+                    </div>
                   </div>
-                  <div class="legend-item">
-                    <span class="legend-color expense"></span>
-                    <span>Expenses</span>
+                  <div class="chart-legend">
+                    <div class="legend-item">
+                      <span class="legend-color income"></span>
+                      <span>Income</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-color expense"></span>
+                      <span>Expenses</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- <div class="card">
+            <!-- <div class="card">
             <div class="card-header">
               <h3>Budget Progress</h3>
               <div class="card-actions">
@@ -314,148 +448,207 @@
             </div>
           </div> -->
 
-          <div class="card">
-            <div class="card-header">
-              <h3>Recent Transactions</h3>
-              <div class="card-actions">
-                <a href="expense.html" class="btn btn-sm btn-primary">View All</a>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="transactions-list">
-                <div class="transaction-item">
-                  <div class="transaction-icon expense">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"></path>
-                      <line x1="6" x2="18" y1="17" y2="17"></line>
-                    </svg>
-                  </div>
-                  <div class="transaction-info">
-                    <div class="transaction-top">
-                      <h4>Grocery Store</h4>
-                      <p class="transaction-amount expense">-$85.20</p>
-                    </div>
-                    <div class="transaction-bottom">
-                      <span class="transaction-category">Food</span>
-                      <span class="transaction-date">Today</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="transaction-item">
-                  <div class="transaction-icon income">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect width="20" height="14" x="2" y="5" rx="2"></rect>
-                      <line x1="2" x2="22" y1="10" y2="10"></line>
-                    </svg>
-                  </div>
-                  <div class="transaction-info">
-                    <div class="transaction-top">
-                      <h4>Salary Deposit</h4>
-                      <p class="transaction-amount income">+$2,500.00</p>
-                    </div>
-                    <div class="transaction-bottom">
-                      <span class="transaction-category">Income</span>
-                      <span class="transaction-date">Yesterday</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="transaction-item">
-                  <div class="transaction-icon expense">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                    </svg>
-                  </div>
-                  <div class="transaction-info">
-                    <div class="transaction-top">
-                      <h4>Electric Bill</h4>
-                      <p class="transaction-amount expense">-$120.50</p>
-                    </div>
-                    <div class="transaction-bottom">
-                      <span class="transaction-category">Utilities</span>
-                      <span class="transaction-date">May 3, 2025</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="transaction-item">
-                  <div class="transaction-icon expense">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M21 7v6h-6"></path>
-                      <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"></path>
-                    </svg>
-                  </div>
-                  <div class="transaction-info">
-                    <div class="transaction-top">
-                      <h4>Car Insurance</h4>
-                      <p class="transaction-amount expense">-$175.00</p>
-                    </div>
-                    <div class="transaction-bottom">
-                      <span class="transaction-category">Insurance</span>
-                      <span class="transaction-date">May 1, 2025</span>
-                    </div>
-                  </div>
+            <div class="card">
+              <div class="card-header">
+                <h3>Recent Transactions</h3>
+                <div class="card-actions">
+                  <a href="expense.html" class="btn btn-sm btn-primary"
+                    >View All</a
+                  >
                 </div>
               </div>
+              <div class="card-body">
+                <div class="transactions-list">
+                  <div class="transaction-item">
+                    <div class="transaction-icon expense">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"
+                        ></path>
+                        <line x1="6" x2="18" y1="17" y2="17"></line>
+                      </svg>
+                    </div>
+                    <div class="transaction-info">
+                      <div class="transaction-top">
+                        <h4>Grocery Store</h4>
+                        <p class="transaction-amount expense">-$85.20</p>
+                      </div>
+                      <div class="transaction-bottom">
+                        <span class="transaction-category">Food</span>
+                        <span class="transaction-date">Today</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="transaction-item">
+                    <div class="transaction-icon income">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                        <line x1="2" x2="22" y1="10" y2="10"></line>
+                      </svg>
+                    </div>
+                    <div class="transaction-info">
+                      <div class="transaction-top">
+                        <h4>Salary Deposit</h4>
+                        <p class="transaction-amount income">+$2,500.00</p>
+                      </div>
+                      <div class="transaction-bottom">
+                        <span class="transaction-category">Income</span>
+                        <span class="transaction-date">Yesterday</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="transaction-item">
+                    <div class="transaction-icon expense">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <polygon
+                          points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                        ></polygon>
+                      </svg>
+                    </div>
+                    <div class="transaction-info">
+                      <div class="transaction-top">
+                        <h4>Electric Bill</h4>
+                        <p class="transaction-amount expense">-$120.50</p>
+                      </div>
+                      <div class="transaction-bottom">
+                        <span class="transaction-category">Utilities</span>
+                        <span class="transaction-date">May 3, 2025</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="transaction-item">
+                    <div class="transaction-icon expense">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M21 7v6h-6"></path>
+                        <path
+                          d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="transaction-info">
+                      <div class="transaction-top">
+                        <h4>Car Insurance</h4>
+                        <p class="transaction-amount expense">-$175.00</p>
+                      </div>
+                      <div class="transaction-bottom">
+                        <span class="transaction-category">Insurance</span>
+                        <span class="transaction-date">May 1, 2025</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="card">
-            <div class="card-header">
-              <h3>Savings Goals</h3>
-              <div class="card-actions">
-                <a href="savings.html" class="btn btn-sm btn-primary">View All</a>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="savings-list">
-                <div class="savings-item">
-                  <div class="savings-info">
-                    <h4>Vacation Fund</h4>
-                    <p class="savings-value">$1,200 / $3,000</p>
-                  </div>
-                  <div class="savings-progress-container">
-                    <div class="savings-progress">
-                      <div class="savings-progress-bar" style="width: 40%;"></div>
-                    </div>
-                    <span class="savings-percent">40%</span>
-                  </div>
-                </div>
-                <div class="savings-item">
-                  <div class="savings-info">
-                    <h4>Emergency Fund</h4>
-                    <p class="savings-value">$5,000 / $10,000</p>
-                  </div>
-                  <div class="savings-progress-container">
-                    <div class="savings-progress">
-                      <div class="savings-progress-bar" style="width: 50%;"></div>
-                    </div>
-                    <span class="savings-percent">50%</span>
-                  </div>
-                </div>
-                <div class="savings-item">
-                  <div class="savings-info">
-                    <h4>New Laptop</h4>
-                    <p class="savings-value">$800 / $1,500</p>
-                  </div>
-                  <div class="savings-progress-container">
-                    <div class="savings-progress">
-                      <div class="savings-progress-bar" style="width: 53%;"></div>
-                    </div>
-                    <span class="savings-percent">53%</span>
-                  </div>
+            <div class="card">
+              <div class="card-header">
+                <h3>Savings Goals</h3>
+                <div class="card-actions">
+                  <a href="savings.html" class="btn btn-sm btn-primary"
+                    >View All</a
+                  >
                 </div>
               </div>
+              <div class="card-body">
+                <div class="savings-list">
+                  <div class="savings-item">
+                    <div class="savings-info">
+                      <h4>Vacation Fund</h4>
+                      <p class="savings-value">$1,200 / $3,000</p>
+                    </div>
+                    <div class="savings-progress-container">
+                      <div class="savings-progress">
+                        <div
+                          class="savings-progress-bar"
+                          style="width: 40%"
+                        ></div>
+                      </div>
+                      <span class="savings-percent">40%</span>
+                    </div>
+                  </div>
+                  <div class="savings-item">
+                    <div class="savings-info">
+                      <h4>Emergency Fund</h4>
+                      <p class="savings-value">$5,000 / $10,000</p>
+                    </div>
+                    <div class="savings-progress-container">
+                      <div class="savings-progress">
+                        <div
+                          class="savings-progress-bar"
+                          style="width: 50%"
+                        ></div>
+                      </div>
+                      <span class="savings-percent">50%</span>
+                    </div>
+                  </div>
+                  <div class="savings-item">
+                    <div class="savings-info">
+                      <h4>New Laptop</h4>
+                      <p class="savings-value">$800 / $1,500</p>
+                    </div>
+                    <div class="savings-progress-container">
+                      <div class="savings-progress">
+                        <div
+                          class="savings-progress-bar"
+                          style="width: 53%"
+                        ></div>
+                      </div>
+                      <span class="savings-percent">53%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
+        </main>
 
-      <footer class="main-footer">
-        <p>&copy; 2025 FinTrack. All rights reserved.</p>
-      </footer>
+        <footer class="main-footer">
+          <p>&copy; 2025 FinTrack. All rights reserved.</p>
+        </footer>
+      </div>
     </div>
-  </div>
 
-<script src="../static/js/theme.js"></script>
-  <script src="../static/js/sidebar.js"></script>
-</body>
+    <script src="../static/js/theme.js"></script>
+    <script src="../static/js/sidebar.js"></script>
+  </body>
 </html>
