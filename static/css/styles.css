@@ -1180,40 +1180,7 @@ svg {
     padding: 0 var(--space-4);
   }
 }
-* {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    body {
-      background-color: #111827;
-      color: #e5e7eb;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    
-    .container {
-      width: 100%;
-      max-width: 320px;
-      position: relative;
-    }
-    
-    .card {
-      background-color: #1f2937;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      width: 100%;
-    }
-    
-    .stats-card {
+.stats-card {
       position: relative;
     }
     
