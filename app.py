@@ -48,16 +48,20 @@ def register():
                 if cursor.fetchone():
                     error = "Username already exists"
                 else:
-                    cursor.execute(
+                    cursor2 = db.cursor()
+                    cursor2.execute(
                         "INSERT INTO users (username, password, name) VALUES (%s, %s, %s)",
                         (username, password, full_name)
                     )
+                    cursor2.close()
                     db.commit()
-                    # Auto-login after register
-                    cursor.execute("SELECT user_id FROM users WHERE username = %s", (username,))
-                    user_id = cursor.fetchone()[0]
-                    session['user'] = user_id
 
+                    # Auto-login after register
+                    cursor2 = db.cursor()
+                    cursor2.execute("SELECT user_id FROM users WHERE username = %s", (username,))
+                    user_id = cursor2.fetchone()[0]
+                    session['user'] = user_id
+                    cursor2.close()
                     cursor.close()
                     db.close()
                     return redirect('/')
@@ -82,21 +86,27 @@ def dashboard():
         return redirect('/login')
 
     db = get_db()
+
     cursor = db.cursor()
     cursor.execute("SELECT * FROM expenses WHERE user_id = %s", (session.get('user'),))
     expenses = cursor.fetchall()
+    total_exp = sum([e[2] for e in expenses]) if expenses else 0
+    cursor.close()
 
-    total_exp = sum([e[1] for e in expenses]) if expenses else 0
-
+    cursor = db.cursor()
     cursor.execute("SELECT amount FROM income WHERE user_id = %s", (session.get('user'),))
     income = cursor.fetchone()
     cursor.close()
-    db.close()
-
     income_val = income[0] if income else 0
-    savings = income_val - total_exp if income_val else None
+    balance = income_val - total_exp if income_val else None
 
-    return render_template('dashboard.html', total=total_exp, expenses=expenses, income=income_val, savings=savings)
+    cursor = db.cursor()
+    cursor.execute("SELECT name, username FROM users WHERE user_id = %s", (session.get('user'),))
+    l = cursor.fetchone()
+    name = l[0]
+    username = l[1]
+    db.close()
+    return render_template('dashboard.html', name = name, username = username, total=total_exp, expenses=expenses, income=income_val, balance=balance)
 
 # View Expenses
 @app.route('/expenses')

@@ -71,3 +71,4 @@ CREATE TABLE categories (
 
 select * from users;	
 select * from income;	
+select * from categories;
