@@ -187,7 +187,7 @@
                   <button class="close-button" id="closeModal">&times;</button>
                 </div>
                 <div class="card-body">
-                  <form class="form" id="incomeForm">
+                  <form class="form" id="incomeForm" action="add_inc" method="post">
                     <div class="form-grid">
                       <div class="form-group">
                         <label for="amount">Amount</label>
@@ -263,7 +263,7 @@
                   </button>
                 </div>
                 <div class="card-body">
-                  <form class="form" action="add_expense" method="post" id="expenseForm">
+                  <form class="form" action="add_exp" method="post" id="expenseForm">
                     <div class="form-grid">
                       <div class="form-group">
                         <label for="amount">Amount</label>
@@ -477,7 +477,7 @@
                   <p>No recent expenses found.</p>
                   {% else %}
                   <div class="transactions-list">
-                    {% for expense in expenses[:5] %}
+                    {% for expense in expenses[:9] %}
                     <div class="transaction-item">
                       <div class="transaction-icon expense">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -507,9 +507,10 @@
 
               </div>
             </div>
+            </div>
           <!-- recent transaction view ends -->
 
-          <div class="card">
+          <!-- <div class="card">
             <div class="card-header">
               <h3>Savings Goals</h3>
               <div class="card-actions">
@@ -556,7 +557,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </section>
       </main>
 

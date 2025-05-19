@@ -792,6 +792,7 @@ svg {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+   color: var(--text-secondary);
 }
 
 .stats-change {
@@ -799,6 +800,7 @@ svg {
   display: flex;
   align-items: center;
   gap: var(--space-1);
+   color: var(--text-secondary);
 }
 
 .stats-change.positive {
@@ -1180,6 +1182,8 @@ svg {
     padding: 0 var(--space-4);
   }
 }
+
+/* added by madhu */
 .stats-card {
       position: relative;
     }
@@ -1200,23 +1204,7 @@ svg {
       stroke: #10b981;
     }
     
-    .stats-info {
-      flex: 1;
-    }
-    
-    .stats-info h3 {
-      font-size: 16px;
-      font-weight: 500;
-      color: #9ca3af;
-      margin-bottom: 4px;
-    }
-    
-    .stats-value {
-      font-size: 24px;
-      font-weight: 600;
-      color: #f9fafb;
-    }
-    
+   
     .add-button {
       position: absolute;
       top: 50%;
