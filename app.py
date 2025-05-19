@@ -88,11 +88,13 @@ def dashboard():
         return redirect('/login')
 
     db = get_db()
-
+    total_exp = 0
+    income_val = 0
     cursor = db.cursor()
     cursor.execute("SELECT * FROM expenses WHERE user_id = %s", (session.get('user'),))
     expenses = cursor.fetchall()
     total_exp = sum([e[2] for e in expenses]) if expenses else 0
+    expenses = expenses if expenses else None
     cursor.close()
 
     cursor = db.cursor()
@@ -107,7 +109,6 @@ def dashboard():
     l = cursor.fetchone()
     name = l[0]
     username = l[1]
-
 
 
     savings = 0
