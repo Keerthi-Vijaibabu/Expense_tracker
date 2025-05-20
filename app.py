@@ -99,9 +99,9 @@ def dashboard():
 
     cursor = db.cursor()
     cursor.execute("SELECT amount FROM income WHERE user_id = %s", (session.get('user'),))
-    income = cursor.fetchone()
+    income = cursor.fetchall()
     cursor.close()
-    income_val = income[0] if income else 0
+    income_val = sum([i[0] for i in income]) if expenses else 0
     balance = income_val - total_exp if income_val else None
 
     cursor = db.cursor()
@@ -181,10 +181,10 @@ def add_income():
         cursor = db.cursor()
 
         sql = """
-            INSERT INTO income (user_id, amount, category, income_date, description)
-            VALUES (%s, %s, %s, %s, %s)
+            INSERT INTO income (user_id, amount, income_date, description)
+            VALUES (%s, %s, %s, %s)
         """
-        val = (session.get('user'), amount, category, date, description)
+        val = (session.get('user'), amount, date, description)
         cursor.execute(sql, val)
         db.commit()
 
