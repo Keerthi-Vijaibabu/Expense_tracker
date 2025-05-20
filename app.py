@@ -199,6 +199,7 @@ def add_income():
     return redirect('/')
 
 
+
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
