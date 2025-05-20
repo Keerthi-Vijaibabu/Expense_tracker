@@ -283,9 +283,9 @@
                   <div class="card-body">
                     <form
                       class="form"
-                      id="incomeForm"
                       action="add_inc"
                       method="post"
+                      id="incomeForm"
                     >
                       <div class="form-grid">
                         <div class="form-group">
@@ -295,6 +295,7 @@
                             <input
                               type="number"
                               id="amount"
+                              name="amount"
                               class="form-input"
                               placeholder="0.00"
                               step="0.01"
@@ -308,13 +309,19 @@
                           <input
                             type="date"
                             id="date"
+                            name="date"
                             class="form-input"
                             required
                           />
                         </div>
                         <div class="form-group">
                           <label for="category">Category</label>
-                          <select id="category" class="form-input" required>
+                          <select
+                            id="category"
+                            name="category"
+                            class="form-input"
+                            required
+                          >
                             <option value="">Select category</option>
                             <option value="salary">Salary</option>
                             <option value="freelance">Freelance</option>
@@ -328,6 +335,7 @@
                           <input
                             type="text"
                             id="description"
+                            name="description"
                             class="form-input"
                             placeholder="Income description"
                           />
@@ -396,7 +404,7 @@
                 <div class="card">
                   <div class="card-header">
                     <h3>Add New Expense</h3>
-                    <button type="button" class="close-button" id="closeModal">
+                    <button class="close-button" id="closeExpenseModal">
                       &times;
                     </button>
                   </div>
@@ -812,7 +820,7 @@
       // Income modal elements
       const addIncomeBtn = document.getElementById("addIncomeBtn");
       const incomeModal = document.getElementById("incomeModal");
-      const closeIncomeModal = document.getElementById("closeIncomeModal");
+      const closeIncomeModal = document.getElementById("closeModal");
       const incomeForm = document.getElementById("incomeForm");
       const totalIncomeDisplay = document.getElementById("totalIncome");
 
