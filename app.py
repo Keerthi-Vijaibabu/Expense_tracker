@@ -95,6 +95,7 @@ def dashboard():
     expenses = cursor.fetchall()
     total_exp = sum([e[2] for e in expenses]) if expenses else 0
     expenses = expenses if expenses else None
+    expenses = expenses[::-1]
     cursor.close()
 
     cursor = db.cursor()
@@ -120,6 +121,8 @@ def dashboard():
     cursor = db.cursor()
     cursor.execute("SELECT amount_saved FROM savings WHERE user_id = %s", (session.get('user'),))
     saving = cursor.fetchall()
+    for i in saving:
+        print(i)
     savings = sum([s[2] for s in saving]) if saving else 0
 
     return render_template('dashboard.html', name = name, username = username, total=total_exp, expenses=expenses, income=income_val, balance=balance, savings = savings)
